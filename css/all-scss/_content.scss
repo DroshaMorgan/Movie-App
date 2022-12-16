@@ -1,0 +1,129 @@
+.content {
+    position: relative;
+}
+
+.movies {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(auto, 270px));
+    gap: 30px;
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.movie-block {
+    display: flex;
+    flex-direction: column;
+    // justify-content: space-between;
+    align-items: center;
+    position: relative;
+
+    cursor: pointer;
+    transition: 0.4s;
+
+    &:hover {
+        // opacity: 0;
+        scale: 1.1;
+    }
+
+    &__img {
+        width: 100%;
+        height: 400px;
+        margin-bottom: 10px;
+        position: relative;
+
+
+        &-el {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        &--darkened {
+            background-color: #000000;
+            z-index: 1;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0.1;
+
+            transition: 0.2s;
+
+            &:hover {
+                opacity: 0;
+            }
+        }
+    }
+
+    &__text {
+        width: 100%;
+        padding: 10px;
+        text-align: left;
+        box-sizing: border-box;
+
+        &-title {
+            font-weight: 700;
+            font-size: 20px;
+            line-height: 20px;
+            color: #FFFFFF;
+
+            margin-bottom: 10px;
+        }
+
+        &-year {
+            font-weight: 700;
+            font-size: 16px;
+            line-height: 13px;
+            color: #AFAFAF;
+
+            margin-bottom: 7px;
+        }
+
+        &-rating {
+            font-weight: 700;
+            font-size: 16px;
+            line-height: 13px;
+            color: #ffc800;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: #0000009b;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            z-index: 2;
+
+            box-sizing: border-box;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+}
+
+// цвет окружности рейтинга
+
+.movie-block__text-rating_color-top {
+    border: 4px solid rgb(0, 255, 0);
+}
+
+.movie-block__text-rating_color-green {
+    border: 3px solid rgb(0, 185, 0);
+}
+
+.movie-block__text-rating_color-yellow {
+    border: 3px solid yellow;
+}
+
+.movie-block__text-rating_color-red {
+    border: 3px solid red;
+}
+
+
+
+.false {
+    display: none;
+}

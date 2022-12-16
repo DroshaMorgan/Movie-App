@@ -1,0 +1,131 @@
+.modal-block {
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow: auto;
+    z-index: 5;
+    display: none;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+
+    &--show {
+        display: flex;
+    }
+}
+
+.movie-modal {
+    display: flex;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.5);
+    flex-direction: column;
+    // justify-content: space-between;
+    align-items: center;
+    max-width: 1000px;
+    min-height: 500px;
+    border-radius: 5px;
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 20px;
+
+    background: linear-gradient(315deg, #4d4459 14.64%, rgb(32, 32, 32) 47.07%, #475F66 80.65%);
+
+    margin: auto;
+    padding: 20px;
+    box-sizing: border-box;
+
+
+
+    &__img {
+        width: 150px;
+        // height: 375px;
+        margin-bottom: 10px;
+
+
+
+        &-el {
+            width: 100%;
+            height: 100%;
+
+        }
+    }
+
+    &__text {
+        width: 100%;
+        padding: 10px;
+        text-align: left;
+        box-sizing: border-box;
+
+        &-top {
+            display: flex;
+            // flex-direction: column;
+            justify-content: center;
+
+            margin-bottom: 20px;
+
+        }
+
+        &-middle {
+            font-weight: 400;
+            font-size: 16px;
+            letter-spacing: 1px;
+            line-height: 23px;
+
+            margin-bottom: 20px;
+        }
+
+
+        &-title {
+            margin-right: 30px;
+        }
+
+        &-year {
+            margin-right: 30px;
+        }
+
+        &-rating {
+            margin-right: 30px;
+        }
+
+        &-age-limit {
+            margin-right: 30px;
+        }
+
+        &-genre {
+            margin-bottom: 10px;
+            // letter-spacing: 20px;
+            // line-height: 25px;
+        }
+
+        &-description {
+            // margin-bottom: 10px;
+            // letter-spacing: 1px;
+            // line-height: 23px;
+            font-size: 18px;
+        }
+    }
+}
+
+
+// цвет текста рейтинга
+
+.modal-block__text-rating_color-top {
+    color: rgb(0, 255, 0);
+}
+
+.modal-block__text-rating_color-green {
+    color: rgb(0, 185, 0);
+}
+
+.modal-block__text-rating_color-yellow {
+    color: yellow;
+}
+
+.modal-block__text-rating_color-red {
+    color: red;
+}
+
+.stop-scrollong {
+    height: 100%;
+    overflow: hidden;
+}

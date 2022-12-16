@@ -1,0 +1,42 @@
+.header {
+    height: 100px;
+    box-sizing: border-box;
+
+    background: #5c457aa2;
+
+
+    margin-bottom: 30px;
+    padding: 0 80px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &__title {
+        font-weight: 700;
+        font-size: 30px;
+        line-height: 20px;
+        color: #FFFFFF;
+    }
+
+    &__search {
+        font-size: 20px;
+        border-radius: 10px;
+        padding: 10px;
+    }
+
+    &__links {
+        font-size: 18px;
+    }
+
+    &__link {
+        text-decoration: none;
+        color: #FFFFFF;
+        cursor: pointer;
+
+        &:hover {
+            color: #d2b2ff;
+        }
+    }
+
+}

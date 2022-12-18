@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@1,100;1,400&family=Quicksand&family=Roboto&display=swap");
 body {
   font-family: Quicksand, Arial, Helvetica, sans-serif;
-  background: linear-gradient(114.23deg, #4d4459 14.64%, rgba(0, 0, 0, 0.7) 47.07%, #475F66 80.65%);
+  background: linear-gradient(90deg, #4d4459 14.64%, rgba(0, 0, 0, 0.7) 47.07%, #475F66 80.65%);
 }
 
 .container {
@@ -19,11 +19,15 @@ body {
   justify-content: space-between;
   align-items: center;
 }
-.header__title {
+.header__title-el {
+  text-decoration: none;
   font-weight: 700;
   font-size: 30px;
   line-height: 20px;
   color: #FFFFFF;
+}
+.header__title-el:hover {
+  color: #a86bff;
 }
 .header__search {
   font-size: 20px;
@@ -38,12 +42,16 @@ body {
   color: #FFFFFF;
   cursor: pointer;
 }
+.header__link-active {
+  color: #a86bff;
+}
 .header__link:hover {
   color: #d2b2ff;
 }
 
 .content {
   position: relative;
+  margin-bottom: 20px;
 }
 
 .movies {
@@ -178,7 +186,7 @@ body {
   font-weight: 700;
   font-size: 20px;
   line-height: 20px;
-  background: linear-gradient(315deg, #4d4459 14.64%, rgb(32, 32, 32) 47.07%, #475F66 80.65%);
+  background: linear-gradient(315deg, #4d4459 14.64%, rgb(60, 60, 60) 47.07%, #475F66 80.65%);
   margin: auto;
   padding: 20px;
   box-sizing: border-box;
@@ -253,11 +261,11 @@ body {
   display: flex;
   justify-content: center;
   margin-bottom: 40px;
+}
+.pagination__el {
+  margin-right: 15px;
   text-decoration: none;
   color: #ffffff;
   font-size: 24px;
   cursor: pointer;
-}
-.pagination__el {
-  margin-right: 15px;
 }/*# sourceMappingURL=main.css.map */

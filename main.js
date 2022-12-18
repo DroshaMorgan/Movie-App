@@ -11,48 +11,110 @@ const moviesEl = document.querySelector('.movies');
 
 // блок для пагинации
 
-// getMoviesSomeTimes(1);
-
-
-// const paginationButton1 = document.querySelector('.pagination__el-1');
-// const paginationButton2 = document.querySelector('.pagination__el-2');
-// const paginationButton3 = document.querySelector('.pagination__el-3');
-// const paginationButton4 = document.querySelector('.pagination__el-4');
-// const paginationButton5 = document.querySelector('.pagination__el-5');
-
 const paginationButtons = document.querySelector('.pagination');
+const buttonTop250 = document.querySelector('.header__links-top250');
+const buttonPopular = document.querySelector('.header__links-popular');
+const buttonTopAwait = document.querySelector('.header__links-top-await');
+
+const buttonsHeader = document.querySelectorAll('.header__link');
+
+let curentApiUrl = API_URL_POPULAR;
+
+buttonPopular.classList.add('header__link-active');
+
+const formEl = document.querySelector('.header__search-form');
+const inputEl = document.querySelector('.header__search');
+
 numberForPagination();
+getMoviesSomeTimes(1, curentApiUrl);
+curentAPI_URL();
+let countPage = 20;
+renderPagination(countPage);
 
 function numberForPagination() {
-    // paginationButton1.addEventListener('click', () => getMoviesSomeTimes(1))
-
-    // paginationButton.forEach(el => {
-    //     el.addEventListener('click', () => {
-    //         getMoviesSomeTimes(el.dataset.pagination);
-    //         return;
-    //     })
-    //     console.log(el.dataset.pagination);
-    // })
-
-
     paginationButtons.addEventListener('click', (e) => {
-        console.log(e.target);
-        getMoviesSomeTimes(e.target.dataset.pagination);
+        // console.log(curentApiUrl);
+        if (e.target.classList.contains('pagination__el')) {
+            getMoviesSomeTimes(e.target.dataset.pagination, curentApiUrl);
+        }
+
     })
 }
 
+function renderPagination(countPage) {
+    paginationButtons.innerHTML = ``;
+    for (let i = 1; i < countPage + 1; i++) {
+        console.log(i);
+        console.log(countPage);
+        paginationButtons.innerHTML += `
+        <a href="#top" class="pagination__el pagination__el-${i}" data-pagination="${i}">${i}</a>
+        `;
+    }
+}
 
-function getMoviesSomeTimes(count) {
-    // for (let i = 1; i < count; i++) {
-    //     getMovies(API_URL_POPULAR, i + 1);
-    // }
-    getMovies(API_URL_POPULAR, count);
+function curentAPI_URL() {
+    buttonTop250
+        .addEventListener('click', () => {
+            curentApiUrl = API_URL_TOP250;
+            // console.log(curentApiUrl);
+            getMoviesSomeTimes(count = 1, curentApiUrl);
+
+            buttonsHeader
+                .forEach(el => el.classList.remove('header__link-active'));
+            buttonTop250.classList.add('header__link-active');
+
+            countPage = 13;
+            renderPagination(countPage);
+        });
+    buttonPopular
+        .addEventListener('click', () => {
+            curentApiUrl = API_URL_POPULAR;
+            // console.log(curentApiUrl);
+            getMoviesSomeTimes(count = 1, curentApiUrl);
+
+            buttonsHeader
+                .forEach(el => el.classList.remove('header__link-active'));
+            buttonPopular.classList.add('header__link-active');
+
+            countPage = 20;
+            renderPagination(countPage);
+        });
+    buttonTopAwait
+        .addEventListener('click', () => {
+            curentApiUrl = API_URL_TOP_AWAIT;
+            // console.log(curentApiUrl);
+            getMoviesSomeTimes(count = 1, curentApiUrl);
+
+            buttonsHeader
+                .forEach(el => el.classList.remove('header__link-active'));
+            buttonTopAwait.classList.add('header__link-active');
+
+            countPage = 1;
+            renderPagination(countPage);
+        });
+    formEl
+        .addEventListener('submit', () => {
+            // curentApiUrl = API_URL_SEARCH;
+            // // console.log(curentApiUrl);
+            // getMoviesSomeTimes(count = 1, curentApiUrl);
+
+            // let countPage = 5;
+            // renderPagination(countPage);
+
+            paginationButtons.innerHTML = ``;
+        });
+}
+
+function getMoviesSomeTimes(count, curentApiUrl) {
+    getMovies(curentApiUrl, count);
 }
 
 // getMovies(API_URL_TOP250);
 
 // функция для связи с БД
-async function getMovies(url, urlId = 1) {
+async function getMovies(url, urlId) {
+    console.log(url);
+    console.log(urlId);
     const resp = await fetch(url + urlId, {
         headers: {
             'Content-Type': 'application/json',
@@ -60,7 +122,20 @@ async function getMovies(url, urlId = 1) {
         },
     });
     const respData = await resp.json(); // БД в формате json
-    // console.log(respData);
+    console.log(respData);
+    showMovies(respData);
+}
+
+async function getMoviesSearch(url) {
+    console.log(url);
+    const resp = await fetch(url, {
+        headers: {
+            'Content-Type': 'application/json',
+            'X-API-KEY': API_KEY,
+        },
+    });
+    const respData = await resp.json(); // БД в формате json
+    console.log(respData);
     showMovies(respData);
 }
 
@@ -133,17 +208,19 @@ function showMovies(data) {
     })
 }
 
-const formEl = document.querySelector('.header__search-form');
-const inputEl = document.querySelector('.header__search');
+// const formEl = document.querySelector('.header__search-form');
+// const inputEl = document.querySelector('.header__search');
 
 formEl.addEventListener('submit', (e) => {
     e.preventDefault();
 
     const apiSearchUrl = `${API_URL_SEARCH}${inputEl.value}`;
 
+    console.log(apiSearchUrl);
+
     if (inputEl.value) {
         moviesEl.innerHTML = ``;
-        getMovies(apiSearchUrl);
+        getMoviesSearch(apiSearchUrl);
     }
 
     // Очищаем инпут

@@ -13,10 +13,17 @@
     align-items: center;
 
     &__title {
-        font-weight: 700;
-        font-size: 30px;
-        line-height: 20px;
-        color: #FFFFFF;
+        &-el {
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 30px;
+            line-height: 20px;
+            color: #FFFFFF;
+
+            &:hover {
+                color: #a86bff;
+            }
+        }
     }
 
     &__search {
@@ -27,12 +34,18 @@
 
     &__links {
         font-size: 18px;
+
+
     }
 
     &__link {
         text-decoration: none;
         color: #FFFFFF;
         cursor: pointer;
+
+        &-active {
+            color: #a86bff;
+        }
 
         &:hover {
             color: #d2b2ff;

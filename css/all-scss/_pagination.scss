@@ -3,13 +3,11 @@
     justify-content: center;
     margin-bottom: 40px;
 
-    text-decoration: none;
-    color: #ffffff;
-    font-size: 24px;
-    cursor: pointer;
-
     &__el {
         margin-right: 15px;
+        text-decoration: none;
+        color: #ffffff;
+        font-size: 24px;
+        cursor: pointer;
     }
-
 }
